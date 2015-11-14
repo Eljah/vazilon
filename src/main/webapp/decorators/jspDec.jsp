@@ -157,9 +157,9 @@
 
                     Chat.initialize = function () {
                         if (window.location.protocol == 'http:') {
-                            Chat.connect('ws://' + window.location.host + '/tourismapp/websocket/chat');
+                            Chat.connect('ws://' + window.location.host + '/websocket/chat');
                         } else {
-                            Chat.connect('wss://' + window.location.host + '/tourismapp/websocket/chat');
+                            Chat.connect('wss://' + window.location.host + '/websocket/chat');
                         }
                     };
 
