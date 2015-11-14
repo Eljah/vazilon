@@ -231,6 +231,23 @@
     }
     google.maps.event.addDomListener(window, 'load', initialize);
 </script>
+<script>
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId      : '1686089191627596',
+            xfbml      : true,
+            version    : 'v2.5'
+        });
+    };
+
+    (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
 
 
 <div class="col-9 col-sm-9 col-lg-9">
@@ -289,6 +306,14 @@
 
         </display:table>
     </div>
+</div>
+
+
+<div
+        class="fb-like col-3 col-sm-3 col-lg-3"
+        data-share="true"
+        data-width="450"
+        data-show-faces="true">
 </div>
 
 

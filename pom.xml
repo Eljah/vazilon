@@ -151,10 +151,29 @@
         </dependency>
         <dependency>
             <groupId>org.webjars</groupId>
+            <artifactId>jquery-ui</artifactId>
+            <version>1.11.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>bootstrap-growl</artifactId>
+            <version>2.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
             <artifactId>webjars-servlet-2.x</artifactId>
             <version>1.1</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>bootstrap</artifactId>
+            <version>3.3.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>jquery-validation</artifactId>
+            <version>1.14.0</version>
+        </dependency>
 
         <!--<dependency>
             <groupId>org.apache.commons</groupId>
@@ -215,7 +234,18 @@
     <profiles>
         <profile>
             <id>test</id>
+            <properties>
+                <build.profile.id>test</build.profile.id>
+            </properties>
             <build>
+                <resources>
+                    <resource>
+                        <directory>src/main/resources/fb/test</directory>
+                    </resource>
+                    <resource>
+                        <directory>src/main/resources/</directory>
+                    </resource>
+                </resources>
                 <plugins>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
@@ -235,7 +265,7 @@
                                 <java.security.auth.login.config>${project.build.directory}/itis408/META-INF/jaas.config
                                 </java.security.auth.login.config>
                             </systemProperties>
-                            <path>/tourismapp</path>
+                            <!--<path>/tourismapp</path>-->
                             <server>tomcat-development-server</server>
                             <port>9967</port>
                             <uriEncoding>UTF-8</uriEncoding>
@@ -306,7 +336,19 @@
 
         <profile>
             <id>prod</id>
+            <properties>
+                <build.profile.id>prod</build.profile.id>
+            </properties>
+
             <build>
+                <resources>
+                    <resource>
+                        <directory>src/main/resources/fb/prod</directory>
+                    </resource>
+                    <resource>
+                        <directory>src/main/resources/</directory>
+                    </resource>
+                </resources>
                 <plugins>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
@@ -326,7 +368,7 @@
                                 <java.security.auth.login.config>${project.build.directory}/itis408/META-INF/jaas.config
                                 </java.security.auth.login.config>
                             </systemProperties>
-                            <path>/tourismapp</path>
+                            <!--<path>/tourismapp</path>-->
                             <server>tomcat-development-server</server>
                             <port>80</port>
                             <uriEncoding>UTF-8</uriEncoding>
@@ -412,7 +454,7 @@
             </plugin>
         </plugins>
 
-        <finalName>tourismapp</finalName>
+        <finalName>vazilon</finalName>
         <outputDirectory>src/main/webapp/WEB-INF/classes</outputDirectory>
     </build>
 </project>

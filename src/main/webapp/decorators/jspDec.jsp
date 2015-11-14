@@ -25,18 +25,18 @@
     <title><decorator:title/></title>
 
     <!-- Bootstrap core CSS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link href="webjars/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="css/jumboron.css" rel="stylesheet">
 
-    <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
-    <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
+    <script src="webjars/jquery/1.11.1/jquery.js"></script>
+    <script src="webjars/jquery-ui/1.11.3/jquery-ui.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/i18n/jquery-ui-i18n.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <link href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" rel="stylesheet">
+    <script src="webjars/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link href="webjars/jquery-ui/1.11.3/jquery-ui.css" rel="stylesheet">
     <link href="webjars/font-awesome/4.4.0/css/font-awesome.css" rel="stylesheet"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-growl/1.0.0/jquery.bootstrap-growl.min.js"></script>
+    <script src="webjars/bootstrap-growl/2.0.1/bootstrap-growl.min.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>

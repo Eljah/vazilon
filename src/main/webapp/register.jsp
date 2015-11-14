@@ -38,7 +38,7 @@
         <input type="reset" value="<fmt:message key="register.label.reset" />" class="btn btn-lg btn-primary btn-block">
     </form>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.14.0/jquery.validate.min.js"></script>
+<script src="webjars/jquery-validation/1.14.0/jquery.validate.min.js"></script>
 <script>// jQuery Form Validation code -->
 $.validator.setDefaults({
     highlight: function (element) {

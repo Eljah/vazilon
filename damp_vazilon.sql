@@ -141,8 +141,8 @@ CREATE TABLE IF NOT EXISTS `points` (
 -- Дамп данных таблицы tourism.points: ~36 rows (приблизительно)
 /*!40000 ALTER TABLE `points` DISABLE KEYS */;
 INSERT INTO `points` (`id`, `latitude`, `longitude`, `name`, `description`, `author`) VALUES
-	(1, 55.55, 44.44, 'test point 1', 'test point 1 description', NULL),
-	(2, 55.8002, 49.1049, 'Кремль', 'test point 2 description', 2),
+	(1, 55.55, 44.44, 'fb.test point 1', 'fb.test point 1 description', NULL),
+	(2, 55.8002, 49.1049, 'Кремль', 'fb.test point 2 description', 2),
 	(3, 55.8136, 49.0869, 'hfgf', 'jhfhf', 2),
 	(4, 55.7955, 49.1139, 'Старейший в Казани общественный туалет', 'Построен в 1820, обветшал к 1840м. ВОт', 2),
 	(10, 55.7955, 49.1139, 'Старейший в Казани общественный туалет', 'Построен в 1820, обветшал к 1840м', 2),
@@ -150,12 +150,12 @@ INSERT INTO `points` (`id`, `latitude`, `longitude`, `name`, `description`, `aut
 	(14, 55.7963, 49.1102, 'Мэрия города', 'До революции городская управа', 2),
 	(15, 55.7955, 49.1139, 'Старейший в Казани общественный туалет', 'Построен в 1820, обветшал к 1840м', 2),
 	(16, 55, 44, 'hfgf', 'jhfhf', 2),
-	(17, 55, 44, 'neighboring test point', 'test point 2 description', 2),
+	(17, 55, 44, 'neighboring fb.test point', 'fb.test point 2 description', 2),
 	(18, 55.7943, 49.1124, '1', '1', 2),
 	(19, 55.7943, 49.1124, '1', '1', 2),
 	(20, 55.7955, 49.1139, 'Старейший в Казани общественный туалет', 'Построен в 1820, обветшал к 1840м', 2),
 	(21, 55.8136, 49.0649, 'hfgf', 'jhfhf', 2),
-	(22, 55.826, 49.0649, 'neighboring test point', 'test point 2 description', 2),
+	(22, 55.826, 49.0649, 'neighboring fb.test point', 'fb.test point 2 description', 2),
 	(23, 55.7964, 49.1101, 'Мэрия города', 'до революции городская управа', 2),
 	(24, 55.7964, 49.1101, 'Мэрия города', 'до революции городская управа', 2),
 	(25, 55.797, 49.1007, 'Стадион-2', 'Рубин-2', 2),

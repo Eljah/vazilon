@@ -25,6 +25,7 @@ public class CallbackServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         Facebook facebook = (Facebook) request.getSession().getAttribute("facebook");
         String oauthCode = request.getParameter("code");
         try {
@@ -54,10 +55,13 @@ public class CallbackServlet extends HttpServlet {
             }
             request.getSession().setAttribute("language", new Locale(facebook.getMe().getLocale().getLanguage()));
             request.getSession().setAttribute("user", sessionUser);
+            response.sendRedirect(request.getContextPath() + "/");
         } catch (FacebookException e) {
-            throw new ServletException(e);
+            request.setAttribute("error", e.getLocalizedMessage());
+            getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
+
+
         }
 
-        response.sendRedirect(request.getContextPath() + "/");
     }
 }
