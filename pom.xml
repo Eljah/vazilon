@@ -373,6 +373,7 @@
                             <port>80</port>
                             <uriEncoding>UTF-8</uriEncoding>
                             <connectorHttpProtocol>HTTP/1.1</connectorHttpProtocol>
+                            <protocol>org.apache.coyote.http11.Http11NioProtocol</protocol>
                             <address>0.0.0.0</address>
                             <extraResources>
                                 <extraResource>
