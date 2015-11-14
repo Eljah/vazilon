@@ -231,10 +231,11 @@
     }
     google.maps.event.addDomListener(window, 'load', initialize);
 </script>
+<%@ page import = "java.util.ResourceBundle" %> <% ResourceBundle resource = ResourceBundle.getBundle("facebook4j");String appid=resource.getString("oauth.appId");%>
 <script>
     window.fbAsyncInit = function() {
         FB.init({
-            appId      : '1686089191627596',
+            appId      : <%=appid%>,
             xfbml      : true,
             version    : 'v2.5'
         });
