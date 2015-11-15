@@ -356,11 +356,20 @@
                     <version>2.2</version>
                     <configuration>
                         <path>/</path>
-                        <url>http://excursions.tatar:8080//manager</url>
+                        <url>http://excursions.tatar:8080/manager</url>
                         <username>admin</username>
                         <password>password</password>
                     </configuration>
                 </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <version>3.3</version>
+                        <configuration>
+                            <source>1.7</source>
+                            <target>1.7</target>
+                        </configuration>
+                    </plugin>
                 </plugins>
             </build>
         </profile>
