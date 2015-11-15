@@ -350,17 +350,93 @@
                     </resource>
                 </resources>
                 <plugins>
-                <plugin>
+                <!--<plugin>
                     <groupId>org.apache.tomcat.maven</groupId>
                     <artifactId>tomcat7-maven-plugin</artifactId>
                     <version>2.2</version>
                     <configuration>
                         <path>/vazilon</path>
-                        <url>http://excursions.tatar:8080/manager/text</url>
+                        <url>http://excursions.tatar:8080/manager/html</url>
                         <username>admin</username>
                         <password>password</password>
+                        <update>true</update>
                     </configuration>
-                </plugin>
+                </plugin>-->
+                    <plugin>
+                        <groupId>org.apache.tomcat.maven</groupId>
+                        <artifactId>tomcat7-maven-plugin</artifactId>
+                        <version>2.2</version>
+                        <configuration>
+                            <systemProperties>
+                                <java.security.auth.login.config>${project.build.directory}/itis408/META-INF/jaas.config
+                                </java.security.auth.login.config>
+                            </systemProperties>
+                            <!--<path>/tourismapp</path>-->
+                            <server>tomcat-development-server</server>
+                            <port>80</port>
+                            <uriEncoding>UTF-8</uriEncoding>
+                            <connectorHttpProtocol>HTTP/1.1</connectorHttpProtocol>
+                            <address>0.0.0.0</address>
+                            <extraResources>
+                                <extraResource>
+                                    <directory>/resources</directory>
+                                    <includes>
+                                        <include>log4j.propreties</include>
+                                        <include>quartz.properties</include>
+                                        <include>quartz-config.xml</include>
+                                    </includes>
+                                </extraResource>
+                            </extraResources>
+                        </configuration>
+                        <dependencies>
+                            <dependency>
+                                <groupId>mysql</groupId>
+                                <artifactId>mysql-connector-java</artifactId>
+                                <version>5.1.6</version>
+                            </dependency>
+                            <dependency>
+                                <groupId>javax.transaction</groupId>
+                                <artifactId>jta</artifactId>
+                                <version>1.1</version>
+                            </dependency>
+                            <dependency>
+                                <groupId>org.freemarker</groupId>
+                                <artifactId>freemarker</artifactId>
+                                <version>2.3.23</version>
+                            </dependency>
+                            <dependency>
+                                <groupId>org.quartz-scheduler</groupId>
+                                <artifactId>quartz-jobs</artifactId>
+                                <version>2.2.0</version>
+                            </dependency>
+                            <dependency>
+                                <groupId>org.quartz-scheduler</groupId>
+                                <artifactId>quartz</artifactId>
+                                <version>2.2.0</version>
+                            </dependency>
+                            <dependency>
+                                <groupId>org.slf4j</groupId>
+                                <artifactId>slf4j-api</artifactId>
+                                <version>1.5.6</version>
+                            </dependency>
+                            <dependency>
+                                <groupId>org.slf4j</groupId>
+                                <artifactId>slf4j-log4j12</artifactId>
+                                <version>1.5.6</version>
+                            </dependency>
+                            <dependency>
+                                <groupId>org.webjars</groupId>
+                                <artifactId>webjars-servlet-2.x</artifactId>
+                                <version>1.1</version>
+                            </dependency>
+                            <dependency>
+                                <groupId>org.webjars</groupId>
+                                <artifactId>font-awesome</artifactId>
+                                <version>4.4.0</version>
+                            </dependency>
+                        </dependencies>
+                    </plugin>
+
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-compiler-plugin</artifactId>
