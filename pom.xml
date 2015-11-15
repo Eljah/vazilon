@@ -356,7 +356,7 @@
                     <version>2.2</version>
                     <configuration>
                         <path>/vazilon</path>
-                        <url>http://excursions.tatar:8080/manager/html</url>
+                        <url>http://excursions.tatar:8080/manager/text</url>
                         <username>admin</username>
                         <password>password</password>
                         <update>true</update>

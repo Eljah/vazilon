@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context useHttpOnly="true" path="/"  ><!--path="/tourismapp" -->
+<Context useHttpOnly="true" path="/vazilon" sessionCookiePath="/"><!--path="/tourismapp" -->
     <Resource
             driverClassName="com.mysql.jdbc.Driver"
             maxActive="100"
@@ -16,12 +16,12 @@
            pathname="C:/itiswebapp/src/main/webapp/META-INF/tomcat-users.xml"/>-->
 
   <!--  <Realm className="org.apache.catalina.realm.CombinedRealm" >-->
-        <Realm className="org.apache.catalina.realm.JDBCRealm"
+   <!--     <Realm className="org.apache.catalina.realm.JDBCRealm"
                driverName="org.gjt.mm.mysql.Driver"
                digest="MD5"
                connectionURL="jdbc:mysql://localhost/tourism?user=root&amp;password=tatarstan"
                userTable="users" userNameCol="user_name" userCredCol="user_pass"
-               userRoleTable="user_roles" roleNameCol="role_name"/>
+               userRoleTable="user_roles" roleNameCol="role_name"/>-->
   <!--      <Realm className="org.apache.catalina.realm.JAASRealm"
                appName="students"
                userClassNames="students.tatar.tourism.web.login.JAASUserPrincipal,students.tatar.tourism.web.login.JAASPasswordPrincipal"
