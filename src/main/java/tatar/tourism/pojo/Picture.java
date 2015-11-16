@@ -71,6 +71,27 @@ public class Picture {
     public void setCoordinatesAndDegree(Float coordinate1Lat, Float coordinate1Long, Float coordinate2Lat, Float coordinate2Long) {
         this.coordinateLat = coordinate1Lat;
         this.coordinateLong = coordinate1Long;
-        this.degree = Math.toDegrees(Math.atan((coordinate2Lat - coordinate1Lat) / (coordinate2Long - coordinate1Long)));
+        if (coordinate2Lat == coordinate1Lat) {
+            if (coordinate2Long > coordinate1Long) {
+                this.degree = 90d;
+            } else {
+                if (coordinate2Long < coordinate1Long) {
+                    this.degree = -90d;
+                } else {
+                     this.degree=0d;
+                }
+
+            }
+        } else {
+            if (coordinate2Long == coordinate1Long) {
+                if (coordinate2Lat > coordinate1Lat) {
+                    this.degree = 0d;
+                } else {
+                    this.degree = 180d;
+                }
+            } else {
+                this.degree = Math.toDegrees(Math.atan((coordinate2Long - coordinate1Long) / (coordinate2Lat - coordinate1Lat)));
+            }
+        }
     }
 }
