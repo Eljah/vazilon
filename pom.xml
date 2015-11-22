@@ -632,7 +632,9 @@
                 <configuration>
                     <formats>
                         <format>xml</format>
+                        <format>html</format>
                     </formats>
+                    <encoding>UTF-8</encoding>
                 </configuration>
                 <executions>
                     <execution>
