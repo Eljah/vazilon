@@ -41,7 +41,7 @@ public class Picture {
     /**
      * Shot degree in degrees, counted from the North clockwise
      * <br>
-     * Угол съемки, отсчитываемый от направления на север по часовой стрелке
+     * Угол съемки, отсчитываемый от направления на север по часовой стрелке (0..90..180), для направлений против часовой (0..-90..180)
      */
     Double degree;
 
@@ -114,7 +114,7 @@ public class Picture {
     /**
      * Shot degree is set there
      * <br>
-     * Устанавливается угла съемки
+     * Устанавливается угол съемки
      * @param degree parameter use Double values or can be null
      */
     public void setDegree(Double degree) {
@@ -135,26 +135,27 @@ public class Picture {
     public void setCoordinatesAndDegree(Float coordinate1Lat, Float coordinate1Long, Float coordinate2Lat, Float coordinate2Long) {
         this.coordinateLat = coordinate1Lat;
         this.coordinateLong = coordinate1Long;
-        if (coordinate2Lat == coordinate1Lat) {
-            if (coordinate2Long > coordinate1Long) {
+        //если у нас точка указатель на той же широте, что и основная (-->) или (<--)
+        if (coordinate2Lat.equals(coordinate1Lat)) {
+            if (coordinate2Long > coordinate1Long) { // (-->) - указатель восточнее основной
                 this.degree = 90d;
             } else {
-                if (coordinate2Long < coordinate1Long) {
+                if (coordinate2Long < coordinate1Long) {  // (<--) - указатель западнее основной
                     this.degree = -90d;
-                } else {
+                } else { // указатель выставили в ту же точку, что и основную. направление не ясно, задаем 0 градусов
                      this.degree=0d;
                 }
 
             }
-        } else {
-            if (coordinate2Long == coordinate1Long) {
-                if (coordinate2Lat > coordinate1Lat) {
+        } else { //в данном случае ни одна из координат основной точки и указателя не совпадают - самый общий случай
+            if (coordinate2Long.equals(coordinate1Long)) {  //совпадают долготы основной точки и указателя, значит направление на север или на юг
+                if (coordinate2Lat > coordinate1Lat) { //координаты указателя больше основной точки, значит направление на север
                     this.degree = 0d;
-                } else {
+                } else {  //координаты указателя меньше основной точки, значит направление на юг
                     this.degree = 180d;
                 }
-            } else {
-                this.degree = Math.toDegrees(Math.atan((coordinate2Long - coordinate1Long) / (coordinate2Lat - coordinate1Lat)));
+            } else { //тот самый общий случай - вычисляем через арктангенс от отношения разниц долгот к разнице широт
+                this.degree = Math.toDegrees(Math.atan2(coordinate2Long - coordinate1Long,coordinate2Lat - coordinate1Lat));
             }
         }
     }
