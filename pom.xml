@@ -616,6 +616,7 @@
                 <version>2.10.3</version>
                 <configuration>
                     <overview>${basedir}/overview.html</overview>
+                    <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
 
