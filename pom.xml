@@ -630,6 +630,14 @@
                 <artifactId>cobertura-maven-plugin</artifactId>
                 <version>2.7</version>
                 <configuration>
+                    <check>
+                        <!-- Per-class thresholds -->
+                        <!--<branchRate>${branch.coverage.target}</branchRate>
+                        <lineRate>${line.coverage.target}</lineRate>-->
+                        <!-- Project-wide thresholds -->
+                        <!--<totalLineRate>${line.coverage.target}</totalLineRate>
+                        <totalBranchRate>${branch.coverage.target}</totalBranchRate>-->
+                    </check>
                     <formats>
                         <format>xml</format>
                         <format>html</format>
@@ -638,11 +646,20 @@
                 </configuration>
                 <executions>
                     <execution>
+                        <id>test</id>
                         <phase>package</phase>
                         <goals>
                             <goal>cobertura</goal>
+                            <goal>check</goal>
                         </goals>
                     </execution>
+                    <!--<execution>
+                        <id>pretest</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>clean</goal>
+                        </goals>
+                    </execution>-->
                 </executions>
             </plugin>
         </plugins>
