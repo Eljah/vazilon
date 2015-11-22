@@ -644,7 +644,7 @@
                     </formats>
                     <encoding>UTF-8</encoding>
                 </configuration>
-                <executions>
+                <!--<executions>
                     <execution>
                         <id>test</id>
                         <phase>package</phase>
@@ -653,14 +653,14 @@
                             <goal>check</goal>
                         </goals>
                     </execution>
-                    <!--<execution>
+                    <execution>
                         <id>pretest</id>
-                        <phase>test</phase>
+                        <phase>clean</phase>
                         <goals>
                             <goal>clean</goal>
                         </goals>
-                    </execution>-->
-                </executions>
+                    </execution>
+                </executions>-->
             </plugin>
         </plugins>
 
