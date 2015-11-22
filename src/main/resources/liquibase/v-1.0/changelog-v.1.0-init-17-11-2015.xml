@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+    <changeSet author="Ilya (generated)" id="1447793541520-1">
+        <preConditions onFail="MARK_RAN"><not><tableExists tableName="excursion_plan"/></not></preConditions>
+        <createTable catalogName="tourism" tableName="excursion_plan">
+            <column autoIncrement="true" name="id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="explanation" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="0" name="short_explanation" type="CHAR(200)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="author_guide" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="vote" type="FLOAT(12)"/>
+            <column name="vote_count" type="INT(10)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Ilya (generated)" id="1447793541520-2">
+        <preConditions onFail="MARK_RAN"><not><tableExists tableName="excursion_trip"/></not></preConditions>
+        <createTable catalogName="tourism" tableName="excursion_trip">
+            <column autoIncrement="true" name="id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="leading_guide" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="complete" type="BIT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="plan_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="vote" type="FLOAT(12)"/>
+            <column name="vote_count" type="INT(10)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Ilya (generated)" id="1447793541520-3">
+        <preConditions onFail="MARK_RAN"><not><tableExists tableName="notification"/></not></preConditions>
+        <createTable catalogName="tourism" tableName="notification">
+            <column autoIncrement="true" name="id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="text" type="CHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Ilya (generated)" id="1447793541520-4">
+        <preConditions onFail="MARK_RAN"><not><tableExists tableName="points"/></not></preConditions>
+        <createTable catalogName="tourism" tableName="points">
+            <column autoIncrement="true" name="id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="latitude" type="FLOAT(12)"/>
+            <column name="longitude" type="FLOAT(12)"/>
+            <column name="name" type="CHAR(255)"/>
+            <column name="description" type="LONGTEXT"/>
+            <column name="author" type="INT(10)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Ilya (generated)" id="1447793541520-5">
+        <preConditions onFail="MARK_RAN"><not><tableExists tableName="routes"/></not></preConditions>
+        <createTable catalogName="tourism" tableName="routes">
+            <column autoIncrement="true" name="id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="plan_id" type="INT(10)"/>
+            <column name="point_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="point_order" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Ilya (generated)" id="1447793541520-6">
+        <preConditions onFail="MARK_RAN"><not><tableExists tableName="users"/></not></preConditions>
+        <createTable catalogName="tourism" tableName="users">
+            <column autoIncrement="true" name="id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="username" type="CHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="CHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="CHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="role" type="CHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="firstname" type="CHAR(50)"/>
+            <column name="lastname" type="CHAR(50)"/>
+            <column defaultValue="en_US" name="locale" type="CHAR(5)"/>
+            <column defaultValueNumeric="0" name="confirmed" type="BIT(1)"/>
+            <column defaultValueNumeric="0" name="active" type="BIT(1)"/>
+            <column name="uuid" type="CHAR(50)"/>
+            <column name="deletedate" type="date"/>
+            <column name="vote" type="FLOAT(12)"/>
+            <column name="vote_count" type="INT(10)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Ilya (generated)" id="1447793541520-7">
+        <preConditions onFail="MARK_RAN"><not><tableExists tableName="users_plan_trip"/></not></preConditions>
+        <createTable catalogName="tourism" tableName="users_plan_trip">
+            <column autoIncrement="true" name="id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="plan" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="trip" type="INT(10)"/>
+            <column name="feedback_trip" type="LONGTEXT"/>
+            <column name="stars_trip" type="INT(10)"/>
+            <column name="feedback_guide" type="LONGTEXT"/>
+            <column name="stars_guide" type="INT(10)"/>
+            <column name="feedback_plan" type="LONGTEXT"/>
+            <column name="stars_plan" type="INT(10)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Ilya (generated)" id="1447793541520-8">
+        <preConditions onFail="MARK_RAN"/>
+        <addForeignKeyConstraint baseColumnNames="plan" baseTableCatalogName="tourism" baseTableName="users_plan_trip" constraintName="FK__excursion_plan" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableCatalogName="tourism" referencedTableName="excursion_plan"/>
+    </changeSet>
+    <changeSet author="Ilya (generated)" id="1447793541520-9">
+        <preConditions onFail="MARK_RAN"/>
+        <addForeignKeyConstraint baseColumnNames="trip" baseTableCatalogName="tourism" baseTableName="users_plan_trip" constraintName="FK__excursion_trip" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableCatalogName="tourism" referencedTableName="excursion_trip"/>
+    </changeSet>
+    <changeSet author="Ilya (generated)" id="1447793541520-10">
+        <preConditions onFail="MARK_RAN"/>
+        <addForeignKeyConstraint baseColumnNames="user" baseTableCatalogName="tourism" baseTableName="users_plan_trip" constraintName="FK__users" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableCatalogName="tourism" referencedTableName="users"/>
+    </changeSet>
+    <changeSet author="Ilya (generated)" id="1447793541520-11">
+        <preConditions onFail="MARK_RAN"/>
+        <addForeignKeyConstraint baseColumnNames="author_guide" baseTableCatalogName="tourism" baseTableName="excursion_plan" constraintName="FK_excursion_plan_users" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableCatalogName="tourism" referencedTableName="users"/>
+    </changeSet>
+    <changeSet author="Ilya (generated)" id="1447793541520-12">
+        <preConditions onFail="MARK_RAN"/>
+        <addForeignKeyConstraint baseColumnNames="plan_id" baseTableCatalogName="tourism" baseTableName="excursion_trip" constraintName="FK_excursion_trip_excursion_plan" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableCatalogName="tourism" referencedTableName="excursion_plan"/>
+    </changeSet>
+    <changeSet author="Ilya (generated)" id="1447793541520-13">
+        <preConditions onFail="MARK_RAN"/>
+        <addForeignKeyConstraint baseColumnNames="leading_guide" baseTableCatalogName="tourism" baseTableName="excursion_trip" constraintName="FK_excursion_trip_users" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableCatalogName="tourism" referencedTableName="users"/>
+    </changeSet>
+    <changeSet author="Ilya (generated)" id="1447793541520-14">
+        <preConditions onFail="MARK_RAN"/>
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableCatalogName="tourism" baseTableName="notification" constraintName="FK_notification_users" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableCatalogName="tourism" referencedTableName="users"/>
+    </changeSet>
+    <changeSet author="Ilya (generated)" id="1447793541520-15">
+        <preConditions onFail="MARK_RAN"/>
+        <addForeignKeyConstraint baseColumnNames="plan_id" baseTableCatalogName="tourism" baseTableName="routes" constraintName="FK_routes_excursion_plan" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableCatalogName="tourism" referencedTableName="excursion_plan"/>
+    </changeSet>
+    <changeSet author="Ilya (generated)" id="1447793541520-16">
+        <preConditions onFail="MARK_RAN"/>
+        <addForeignKeyConstraint baseColumnNames="point_id" baseTableCatalogName="tourism" baseTableName="routes" constraintName="FK_routes_points" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableCatalogName="tourism" referencedTableName="points"/>
+    </changeSet>
+    <changeSet author="Ilya (generated)" id="1447793541520-17">
+        <preConditions onFail="MARK_RAN"/>
+        <addUniqueConstraint catalogName="tourism" columnNames="username" constraintName="Индекс 2" deferrable="false" disabled="false" initiallyDeferred="false" tableName="users"/>
+    </changeSet>
+    <changeSet author="Ilya (generated)" id="1447793541520-18">
+        <preConditions onFail="MARK_RAN"/>
+        <createIndex catalogName="tourism" indexName="fk_routes_points_2" tableName="routes" unique="false">
+            <column name="point_order"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Ilya (generated)" id="1447793541520-19">
+        <preConditions onFail="MARK_RAN"/>
+        <createIndex catalogName="tourism" indexName="индекс 1" tableName="excursion_plan" unique="false">
+            <column name="id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Ilya (generated)" id="1447793541520-20">
+        <preConditions onFail="MARK_RAN"/>
+        <createIndex catalogName="tourism" indexName="индекс 1" tableName="excursion_trip" unique="false">
+            <column name="id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Ilya (generated)" id="1447793541520-21">
+        <preConditions onFail="MARK_RAN"/>
+        <createIndex catalogName="tourism" indexName="индекс 1" tableName="notification" unique="false">
+            <column name="id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Ilya (generated)" id="1447793541520-22">
+        <preConditions onFail="MARK_RAN"/>
+        <createIndex catalogName="tourism" indexName="индекс 1" tableName="points" unique="false">
+            <column name="id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Ilya (generated)" id="1447793541520-23">
+        <preConditions onFail="MARK_RAN"/>
+        <createIndex catalogName="tourism" indexName="индекс 1" tableName="routes" unique="false">
+            <column name="id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Ilya (generated)" id="1447793541520-24">
+        <preConditions onFail="MARK_RAN"/>
+        <createIndex catalogName="tourism" indexName="индекс 1" tableName="users" unique="false">
+            <column name="id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="Ilya (generated)" id="1447793541520-25">
+        <preConditions onFail="MARK_RAN"/>
+        <createIndex catalogName="tourism" indexName="индекс 1" tableName="users_plan_trip" unique="false">
+            <column name="id"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

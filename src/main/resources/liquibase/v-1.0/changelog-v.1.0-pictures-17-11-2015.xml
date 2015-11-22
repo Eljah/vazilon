@@ -1,0 +1,35 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+    <changeSet id="2" author="Ilya">
+        <createTable tableName="pictures">
+            <column name="id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="origin_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="upload_date" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="TEXT">
+                <constraints nullable="true"/>
+            </column>
+            <column name="lat" type="FLOAT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="long" type="FLOAT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="degree" type="DOUBLE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <rollback>
+            <dropTable tableName="pictures"/>
+        </rollback>
+    </changeSet>
+</databaseChangeLog>

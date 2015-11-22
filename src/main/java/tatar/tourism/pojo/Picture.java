@@ -4,6 +4,7 @@ package tatar.tourism.pojo;
  * Created by Ilya Evlampiev on 10.11.2015.
  */
 public class Picture {
+    int id;
     String originName;
     String uploadDate;
     User uploader;

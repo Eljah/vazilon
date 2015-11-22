@@ -14,7 +14,7 @@ public class PictureCoordinatesTest {
     public void testPic11_11() throws Throwable {
      Picture p=new Picture();
         p.setCoordinatesAndDegree(1f,1f,1f,1f);
-        assert(p.getDegree()==0);
+        assert(p.getDegree().equals(Double.NaN));
     }
 
     /*
@@ -41,14 +41,14 @@ public class PictureCoordinatesTest {
     public void testPic01_11() throws Throwable {
         Picture p=new Picture();
         p.setCoordinatesAndDegree(1f,0f,1f,1f);
-        assert(p.getDegree()==0);
+        assert(p.getDegree()==90);
     }
 
     @Test
     public void testPic11_01() throws Throwable {
         Picture p=new Picture();
         p.setCoordinatesAndDegree(1f,1f,1f,0f);
-        assert(p.getDegree()==180);
+        assert(p.getDegree()==-90);
     }
 
 
