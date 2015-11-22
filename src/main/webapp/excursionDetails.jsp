@@ -21,19 +21,19 @@
             image: 'rating/images/stars.png',
             loader: 'rating/images/ajax-loader.gif',
             url: 'rating',
-            titles: ['votes', 'votes', 'votes'],
-            localizedYourVote: 'Your votes',
+            titles: [' <fmt:message key="excursiondetail.label.votes1" />', '<fmt:message key="excursiondetail.label.votes2" />', '<fmt:message key="excursiondetail.label.votes8" />'],
+            localizedYourVote: '<fmt:message key="excursiondetail.label.yourvotes" />',
             <c:if test="${((sessionUser==null)||(excursion==null))||(excursion.guideStars!=0)}">
             readOnly: true,
             </c:if>
             callback: function (responce) {
 
                 //this.vote_success.fadeOut(2000);
-                this.vote_success.html('Total votes: ' + this._data.val)
+                this.vote_success.html('<fmt:message key="excursiondetail.label.totalscore" />: ' + this._data.val)
             },
             readOnlyFunction: function () {
                 //this.vote_success.fadeOut(2000);
-                this.vote_success.html('Total votes: ' + this._data.val<c:if test="${((excursion.guideStars!=0)&&(sessionUser!=null))&&(excursion!=null)}"> + '. You have alreade voted. Your vote is ${excursion.guideStars} '</c:if>)
+                this.vote_success.html('<fmt:message key="excursiondetail.label.totalscore" /> ' + this._data.val<c:if test="${((excursion.guideStars!=0)&&(sessionUser!=null))&&(excursion!=null)}"> + '. <fmt:message key="excursiondetail.label.youvotedyourvote" /> ${excursion.guideStars}'</c:if>)
             }
         });
 
@@ -42,18 +42,18 @@
             image: 'rating/images/stars.png',
             loader: 'rating/images/ajax-loader.gif',
             url: 'rating',
-            titles: ['votes', 'votes', 'votes'],
-            localizedYourVote: 'Your votes',
+            titles: [' <fmt:message key="excursiondetail.label.votes1" />', '<fmt:message key="excursiondetail.label.votes2" />', '<fmt:message key="excursiondetail.label.votes8" />'],
+            localizedYourVote: '<fmt:message key="excursiondetail.label.yourvotes" />',
             <c:if test="${((sessionUser==null)||(excursion==null))||(excursion.tripStars!=0)}">
             readOnly: true,
             </c:if>
             callback: function (responce) {
                 //this.vote_success.fadeOut(2000);
-                this.vote_success.html('Total votes: ' + this._data.val)
+                this.vote_success.html('<fmt:message key="excursiondetail.label.totalscore" />: ' + this._data.val)
             },
             readOnlyFunction: function () {
                 //this.vote_success.fadeOut(2000);
-                this.vote_success.html('Total votes: ' + this._data.val<c:if test="${((excursion.tripStars!=0)&&(sessionUser!=null))&&(excursion!=null)}"> + '. You have alreade voted. Your vote is ${excursion.tripStars}'</c:if>)
+                this.vote_success.html('<fmt:message key="excursiondetail.label.totalscore" /> ' + this._data.val<c:if test="${((excursion.tripStars!=0)&&(sessionUser!=null))&&(excursion!=null)}"> + '. <fmt:message key="excursiondetail.label.youvotedyourvote" /> ${excursion.tripStars}'</c:if>)
             }
         });
 
@@ -63,18 +63,18 @@
             loader: 'rating/images/ajax-loader.gif',
             minimal: 0.6,
             url: 'rating',
-            titles: ['votes', 'votes', 'votes'],
-            localizedYourVote: 'Your votes',
+            titles: [' <fmt:message key="excursiondetail.label.votes1" />', '<fmt:message key="excursiondetail.label.votes2" />', '<fmt:message key="excursiondetail.label.votes8" />'],
+            localizedYourVote: '<fmt:message key="excursiondetail.label.yourvotes" />',
             <c:if test="${((sessionUser==null)||(excursion==null))||(excursion.planStars!=0)}">
             readOnly: true,
             </c:if>
             callback: function (responce) {
                 //this.vote_success.fadeOut(2000);
-                this.vote_success.html('Total votes: ' + this._data.val)
+                this.vote_success.html('<fmt:message key="excursiondetail.label.totalscore" />: ' + this._data.val)
             },
             readOnlyFunction: function () {
                 //this.vote_success.fadeOut(2000);
-                this.vote_success.html('Total votes: ' + this._data.val<c:if test="${((excursion.planStars!=0)&&(sessionUser!=null))&&(excursion!=null)}"> + '. You have alreade voted. Your vote is ${excursion.planStars}'</c:if>)
+                this.vote_success.html('<fmt:message key="excursiondetail.label.totalscore" /> ' + this._data.val<c:if test="${((excursion.planStars!=0)&&(sessionUser!=null))&&(excursion!=null)}"> + '. <fmt:message key="excursiondetail.label.youvotedyourvote" /> ${excursion.planStars}'</c:if>)
             }
         });
     })
@@ -116,11 +116,11 @@
         };
         var map = new google.maps.Map(document.getElementById("map-canvas"), mapProp);
         //var bounds = new google.maps.LatLngBounds();
-/*
-        google.maps.event.addListener(map, 'click', function (event) {
-            placeMarker(event.latLng);
-        });
- */
+        /*
+         google.maps.event.addListener(map, 'click', function (event) {
+         placeMarker(event.latLng);
+         });
+         */
         var marker;
 
         marker = new google.maps.Marker({
@@ -141,22 +141,22 @@
 
         var geoString = ${jsonPoints};
         /*
-        {
-                    "type": "FeatureCollection",
-                    "features": [
-                        {   "type": "Feature",
+         {
+         "type": "FeatureCollection",
+         "features": [
+         {   "type": "Feature",
 
-                            "geometry": {
-                                "coordinates": [
-                                    -94.149,
-                                    36.33
-                                ],
-                                "type": "Point"
-                            }
-                        }
-                    ]
-                } ;
-*/
+         "geometry": {
+         "coordinates": [
+         -94.149,
+         36.33
+         ],
+         "type": "Point"
+         }
+         }
+         ]
+         } ;
+         */
 
         var myStyle = {
             strokeColor: "#000000",
@@ -204,52 +204,231 @@
         //features.setMap(map);
 
         map.fitBounds(bounds);
-/*
-        function placeMarker(location) {
-            if (marker) {
-                marker.setPosition(location);
-            } else {
-                marker = new google.maps.Marker({
-                    position: location,
-                    map: map
-                });
-            }
-            var lat = location.lat();
-            var long = location.lng();
-            document.getElementById('displayLat').value = location.lat();
-            document.getElementById('displayLong').value = location.lng();
-            infowindow.open(map, marker);
-        }
-        */
+        /*
+         function placeMarker(location) {
+         if (marker) {
+         marker.setPosition(location);
+         } else {
+         marker = new google.maps.Marker({
+         position: location,
+         map: map
+         });
+         }
+         var lat = location.lat();
+         var long = location.lng();
+         document.getElementById('displayLat').value = location.lat();
+         document.getElementById('displayLong').value = location.lng();
+         infowindow.open(map, marker);
+         }
+         */
 
         map.data.addListener('click', function (event) {
             infowindow.setContent(event.feature.getProperty('name'));
             infowindow.setPosition(event.latLng);
-            infowindow.setOptions({pixelOffset: new google.maps.Size(0,-34)});
+            infowindow.setOptions({pixelOffset: new google.maps.Size(0, -34)});
             infowindow.open(map);
         });
         //map.fitBounds(bounds);
     }
     google.maps.event.addDomListener(window, 'load', initialize);
 </script>
-<%@ page import = "java.util.ResourceBundle" %> <% ResourceBundle resource = ResourceBundle.getBundle("facebook4j");String appid=resource.getString("oauth.appId");%>
+<%@ page import="java.util.ResourceBundle" %>
+<% ResourceBundle resource = ResourceBundle.getBundle("facebook4j");
+    String appid = resource.getString("oauth.appId");%>
 <script>
-    window.fbAsyncInit = function() {
+    window.fbAsyncInit = function () {
         FB.init({
-            appId      : <%=appid%>,
-            xfbml      : true,
-            version    : 'v2.5'
+            appId: <%=appid%>,
+            xfbml: true,
+            version: 'v2.5'
         });
     };
 
-    (function(d, s, id){
+    (function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) {return;}
-        js = d.createElement(s); js.id = id;
+        if (d.getElementById(id)) {
+            return;
+        }
+        js = d.createElement(s);
+        js.id = id;
         js.src = "//connect.facebook.net/en_US/sdk.js";
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
 </script>
+
+<!-- Modal -->
+<div id="myModal3" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><fmt:message
+                        key="excursiondetail.label.sendplanfeedback"/></h4>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <form action="excursionDetails?id=${excursionDetails.databaseId}" method="post">
+                        <div class="form-group col-md-12">
+
+                            <label for="planfeedback" class="sr-only"><fmt:message
+                                    key="excursiondetail.label.sendplanfeedback"/></label>
+                            <textarea name="planfeedback" id="planfeedback"
+                                      class="form-control vresize"
+                                      placeholder="<fmt:message key="excursiondetail.label.sendplanfeedback" />">${excursion.planFeedback}</textarea>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <input type="submit" style="margin-bottom:4px;white-space: normal;width:100%;"
+                                   value="<c:if
+                test="${(excursion.planFeedback==null)}">
+            <fmt:message
+                    key="excursiondetail.label.submitfeedback"/></c:if><c:if
+                test="${(excursion.planFeedback!=null)}">
+            <fmt:message
+                    key="excursiondetail.label.updatefeedback"/></c:if>"
+                                   class="btn btn-lg btn-primary btn-block">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <button type="button" style="margin-bottom:4px;white-space: normal;width:100%;"
+                                    class="btn btn-lg btn-primary btn-block" data-dismiss="modal">
+                                <fmt:message
+                                        key="excursiondetail.label.cancelfeedback"/></button>
+                        </div>
+                    </form>
+                    <c:if
+                            test="${(excursion.planFeedback!=null)}">
+                        <p>&nbsp;</p>
+                        <blockquote>
+                            <p>
+                                    ${excursion.planFeedback}
+                            </p>
+                            <footer>${excursion.user.firstname} ${excursion.user.lastname} <fmt:message
+                                    key="excursiondetail.label.tatarstantourism"/></footer>
+                        </blockquote>
+                    </c:if>
+                    <p>&nbsp;</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Modal -->
+<div id="myModal2" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><fmt:message
+                        key="excursiondetail.label.sendtripfeedback"/></h4>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <form action="excursionDetails?id=${excursionDetails.databaseId}" method="post">
+                        <div class="form-group col-md-12">
+
+                            <label for="tripfeedback" class="sr-only"><fmt:message
+                                    key="excursiondetail.label.sendtripfeedback"/></label>
+                            <textarea name="tripfeedback" id="tripfeedback"
+                                      class="form-control vresize"
+                                      placeholder="<fmt:message key="excursiondetail.label.sendtripfeedback" />">${excursion.tripFeedback}</textarea>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <input type="submit" style="margin-bottom:4px;white-space: normal;width:100%;"
+                                   value="<c:if
+                test="${(excursion.tripFeedback==null)}">
+            <fmt:message
+                    key="excursiondetail.label.submitfeedback"/></c:if><c:if
+                test="${(excursion.tripFeedback!=null)}">
+            <fmt:message
+                    key="excursiondetail.label.updatefeedback"/></c:if>"
+                                   class="btn btn-lg btn-primary btn-block">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <button type="button" style="margin-bottom:4px;white-space: normal;width:100%;"
+                                    class="btn btn-lg btn-primary btn-block" data-dismiss="modal">
+                                <fmt:message
+                                        key="excursiondetail.label.cancelfeedback"/></button>
+                        </div>
+                    </form>
+                    <c:if
+                            test="${(excursion.tripFeedback!=null)}">
+                        <p>&nbsp;</p>
+                        <blockquote>
+                            <p>
+                                    ${excursion.tripFeedback}
+                            </p>
+                            <footer>${excursion.user.firstname} ${excursion.user.lastname} <fmt:message
+                                    key="excursiondetail.label.tatarstantourism"/></footer>
+                        </blockquote>
+                    </c:if>
+                    <p>&nbsp;</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Modal -->
+<div id="myModal1" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><fmt:message
+                        key="excursiondetail.label.sendguidefeedback"/></h4>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <form action="excursionDetails?id=${excursionDetails.databaseId}" method="post">
+                        <div class="form-group col-md-12">
+
+                            <label for="guidefeedback" class="sr-only"><fmt:message
+                                    key="excursiondetail.label.sendguidefeedback"/></label>
+                            <textarea name="guidefeedback" id="guidefeedback"
+                                      class="form-control vresize"
+                                      placeholder="<fmt:message key="excursiondetail.label.sendguidefeedback" />">${excursion.guideFeedback}</textarea>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <input type="submit" style="margin-bottom:4px;white-space: normal;width:100%;"
+                                   value="<c:if
+                test="${(excursion.guideFeedback==null)}">
+            <fmt:message
+                    key="excursiondetail.label.submitfeedback"/></c:if><c:if
+                test="${(excursion.guideFeedback!=null)}">
+            <fmt:message
+                    key="excursiondetail.label.updatefeedback"/></c:if>"
+                                   class="btn btn-lg btn-primary btn-block">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <button type="button" style="margin-bottom:4px;white-space: normal;width:100%;"
+                                    class="btn btn-lg btn-primary btn-block" data-dismiss="modal">
+                                <fmt:message
+                                        key="excursiondetail.label.cancelfeedback"/></button>
+                        </div>
+                    </form>
+                    <c:if
+                            test="${(excursion.guideFeedback!=null)}">
+                        <p>&nbsp;</p>
+                        <blockquote>
+                            <p>
+                                    ${excursion.guideFeedback}
+                            </p>
+                            <footer>${excursion.user.firstname} ${excursion.user.lastname} <fmt:message
+                                    key="excursiondetail.label.tatarstantourism"/></footer>
+                        </blockquote>
+                    </c:if>
+                    <p>&nbsp;</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
 
 
 <div class="col-9 col-sm-9 col-lg-9">
@@ -336,9 +515,7 @@
 <div class="col-3 col-sm-3 col-lg-3">
     <h2><fmt:message
             key="excursiondetail.label.feedback"/></h2>
-    ${excursion.planFeedback}
-    ${excursion.planStars}
-    <div class="border-wrap">
+   <div class="border-wrap">
         <h2><fmt:message
                 key="excursiondetail.label.planfeedback"/></h2>
 
@@ -349,9 +526,22 @@
             <input type="hidden" name="cat_id" value="3"/>
         </div>
     </div>
+</div>
+<c:if test="${((sessionUser!=null)&&(excursion!=null))}">
+    <div class="col-3 col-sm-3 col-lg-3">
+        <button type="button" class="border-wrap btn btn-info btn-lg"
+                style="margin-bottom:4px;white-space: normal;width:100%;"
+                data-toggle="modal" data-target="#myModal3"><c:if
+                test="${(excursion.planFeedback==null)}">
+            <fmt:message
+                    key="excursiondetail.label.sendplanfeedback"/></c:if><c:if
+                test="${(excursion.planFeedback!=null)}">
+            <fmt:message
+                    key="excursiondetail.label.updateplanfeedback"/></c:if></button>
+    </div>
+</c:if>
 
-    ${excursion.tripFeedback}
-    ${excursion.tripStars}
+<div class="col-3 col-sm-3 col-lg-3">
     <div class="border-wrap">
         <h2><fmt:message
                 key="excursiondetail.label.tripfeedback"/></h2>
@@ -363,9 +553,22 @@
             <input type="hidden" name="cat_id" value="2"/>
         </div>
     </div>
-
-
-    ${excursion.guideFeedback}
+</div>
+<!-- Trigger the modal with a button -->
+<c:if test="${((sessionUser!=null)&&(excursion!=null))}">
+    <div class="col-3 col-sm-3 col-lg-3">
+        <button type="button" class="border-wrap btn btn-info btn-lg"
+                style="margin-bottom:4px;white-space: normal;width:100%;"
+                data-toggle="modal" data-target="#myModal2"><c:if
+                test="${(excursion.tripFeedback==null)}">
+            <fmt:message
+                    key="excursiondetail.label.sendtripfeedback"/></c:if><c:if
+                test="${(excursion.tripFeedback!=null)}">
+            <fmt:message
+                    key="excursiondetail.label.updatetripfeedback"/></c:if></button>
+    </div>
+</c:if>
+<div class="col-3 col-sm-3 col-lg-3">
     <div class="border-wrap">
         <h2><fmt:message
                 key="excursiondetail.label.guidefeedback"/></h2>
@@ -377,9 +580,20 @@
             <input type="hidden" name="cat_id" value="1"/>
         </div>
     </div>
-
-
 </div>
+<c:if test="${((sessionUser!=null)&&(excursion!=null))}">
+    <div class="col-3 col-sm-3 col-lg-3">
+        <button type="button" class="border-wrap btn btn-info btn-lg"
+                style="margin-bottom:4px;white-space: normal;width:100%;"
+                data-toggle="modal" data-target="#myModal1"><c:if
+                test="${(excursion.guideFeedback==null)}">
+            <fmt:message
+                    key="excursiondetail.label.sendguidefeedback"/></c:if><c:if
+                test="${(excursion.guideFeedback!=null)}">
+            <fmt:message
+                    key="excursiondetail.label.updateguidefeedback"/></c:if></button>
+    </div>
+</c:if>
 
 
 </body>

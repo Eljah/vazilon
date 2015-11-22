@@ -181,9 +181,9 @@
 
                     Chat.initialize = function () {
                         if (window.location.protocol == 'http:') {
-                            Chat.connect('ws://' + window.location.host + '/websocket/chat');
+                            Chat.connect('ws://' + window.location.host + '/vazilon/websocket/chat');
                         } else {
-                            Chat.connect('wss://' + window.location.host + '/websocket/chat');
+                            Chat.connect('wss://' + window.location.host + '/vazilon/websocket/chat');
                         }
                     };
 

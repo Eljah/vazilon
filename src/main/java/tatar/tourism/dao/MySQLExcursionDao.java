@@ -119,6 +119,7 @@ public class MySQLExcursionDao extends MySqlDao implements ExcursionDao {
                 ex.setGuideFeedback(rs.getString("users_plan_trip.feedback_guide"));
                 ex.setTripFeedback(rs.getString("users_plan_trip.feedback_trip"));
                 ex.setPlanFeedback(rs.getString("users_plan_trip.feedback_plan"));
+                ex.setUser(user);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -139,8 +140,8 @@ public class MySQLExcursionDao extends MySqlDao implements ExcursionDao {
         Connection con = getConnection();
         PreparedStatement stmt = null;
         try {
-            stmt = con.prepareStatement("UPDATE users_plan_trip SET feedback_trip=?, stars_trip=?,  feedback_guide=?, stars_guide=?,  feedback_plan=?, stars_plan=? " +
-                    "WHERE id =  ? and user=?");
+            stmt = con.prepareStatement("UPDATE users_plan_trip SET feedback_trip=?, feedback_guide=?, feedback_plan=? " +
+                    "WHERE id=? and user=?");
             stmt.setString(1, excursion.getTripFeedback());
             stmt.setString(2, excursion.getGuideFeedback());
             stmt.setString(3, excursion.getPlanFeedback());

@@ -57,7 +57,7 @@ public class ExcusionDetailsServlet extends HttpServlet {
                         JSONObject point = new JSONObject();
                         point.put("type", "Point");
                         // construct a JSONArray from a string; can also use an array or list
-                        JSONArray coord = new JSONArray("["+obj.getLongitude()+","+obj.getLatitude()+"]");
+                        JSONArray coord = new JSONArray("[" + obj.getLongitude() + "," + obj.getLatitude() + "]");
                         point.put("coordinates", coord);
                         JSONObject feature = new JSONObject();
                         feature.put("geometry", point);
@@ -65,12 +65,12 @@ public class ExcusionDetailsServlet extends HttpServlet {
                         featureList.put(feature);
                         JSONObject properties = new JSONObject();
                         feature.put("properties", properties);
-                        properties.put("name",obj.getName());
+                        properties.put("name", obj.getName());
                         featureCollection.put("features", featureList);
                     }
                     log.info(featureCollection.toString());
                 } catch (JSONException e) {
-                    log.error("can't save json object: "+e.toString());
+                    log.error("can't save json object: " + e.toString());
                 }
                 // output the result
                 //System.out.println("featureCollection="+featureCollection.toString());
@@ -93,43 +93,76 @@ public class ExcusionDetailsServlet extends HttpServlet {
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
         resp.setContentType("text/html;charset=UTF-8");
+        String id = req.getParameter("id");
 
         Sightseer sessionUser = (Sightseer) req.getSession().getAttribute("user");
+        if (id != null) {
+            int idInt = Integer.parseInt(id);
+            ExcursionTrip exTrip = excursionTripDao.read(idInt);
+            if (sessionUser != null) {
+                Excursion ex = excursionDao.read(exTrip, sessionUser);
+                req.setAttribute("excursion", ex);
+                Route route = pointDao.readRoute(exTrip.getOrigin());
+                req.setAttribute("points", route.getPoints());
 
-        String dbId = req.getParameter("dbId");
-        String planId = req.getParameter("planId");
-        Excursion excursion = new Excursion();
-        excursion.setUser(sessionUser);
-        ExcursionTrip excursionTrip = new ExcursionTrip();
-        excursionTrip.setDatabaseId(Integer.parseInt(dbId));
-        excursion.setExcursionTrip(excursionTrip);
-        ExcursionPlan excursionPlan = new ExcursionPlan();
-        excursionPlan.setDatabaseId(Integer.parseInt(planId));
-        excursionTrip.setOrigin(excursionPlan);
-        excursion.setExcursionPlan(excursionPlan);
-        excursionDao.create(excursion);
-        sessionUser.addPlannedExcursion(excursion.getExcursionTrip());
-        excursionTrip = excursionTripDao.read(excursion.getExcursionTrip().getDatabaseId());
-        new Notification(excursionTrip.getLeadingGuide(), excursion.getUser().getFirstname() + " " + excursion.getUser().getLastname() + " signed for your excursion " + excursionTrip.getOrigin().getShortExplanation() + " on " + excursionTrip.getDate());
+                String tripFeedback = req.getParameter("tripfeedback");
+                if (tripFeedback != null) {
+                    ex.setTripFeedback(tripFeedback);
+                    excursionDao.update(ex);
+                }
+                String planFeedback = req.getParameter("planfeedback");
+                if (planFeedback != null) {
+                    ex.setPlanFeedback(planFeedback);
+                    excursionDao.update(ex);
+                }
+                String guideFeedback = req.getParameter("guidefeedback");
+                if (guideFeedback != null) {
+                    ex.setGuideFeedback(guideFeedback);
+                    excursionDao.update(ex);
+                }
 
-        List<ExcursionTrip> tripList = null;
-        List<ExcursionPlan> planList = null;
-        try {
-            planList = excursionPlanDao.getAll();
-            tripList = excursionTripDao.getAllInFuture();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        req.setAttribute("excplans", planList);
+                //todo remove
+                JSONObject featureCollection = new JSONObject();
+                try {
+                    featureCollection.put("type", "FeatureCollection");
+                    JSONArray featureList = new JSONArray();
+                    // iterate through your list
+                    for (Point obj : route.getPoints()) {
+                        // {"geometry": {"type": "Point", "coordinates": [-94.149, 36.33]}
+                        JSONObject point = new JSONObject();
+                        point.put("type", "Point");
+                        // construct a JSONArray from a string; can also use an array or list
+                        JSONArray coord = new JSONArray("[" + obj.getLongitude() + "," + obj.getLatitude() + "]");
+                        point.put("coordinates", coord);
+                        JSONObject feature = new JSONObject();
+                        feature.put("geometry", point);
+                        feature.put("type", "Feature");
+                        featureList.put(feature);
+                        JSONObject properties = new JSONObject();
+                        feature.put("properties", properties);
+                        properties.put("name", obj.getName());
+                        featureCollection.put("features", featureList);
+                    }
+                    log.info(featureCollection.toString());
+                } catch (JSONException e) {
+                    log.error("can't save json object: " + e.toString());
+                }
+                // output the result
+                //System.out.println("featureCollection="+featureCollection.toString());
+                req.setAttribute("jsonPoints", featureCollection.toString());
 
-        log.debug("Plans list is got from the db");
-        req.setAttribute("excplans", planList);
-        req.setAttribute("trips", tripList);
-        if (sessionUser != null) {
+
+            }
+            log.info("Trip is got from the db");
+            req.setAttribute("excursionDetails", exTrip);
             req.setAttribute("sessionUser", sessionUser);
+            if (sessionUser != null) {
+                req.setAttribute("sessionUser", sessionUser);
+            }
         }
-        ;
-        getServletContext().getRequestDispatcher("/excursions.jsp").forward(req, resp);
+        getServletContext().getRequestDispatcher("/excursionDetails.jsp").forward(req, resp);
+
+
     }
 
 }
