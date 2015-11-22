@@ -3,9 +3,6 @@ package tatar.tourism.pojo;
 /**
  * Created by Ilya Evlampiev on 10.11.2015.
  * @author Ilya Evlampiev
- */
-
-/**
  * POJO Model of Picture. Defines the photo coordinates and shot direction in degrees, description, owner user, original filename and upload time.
  * <br>
  * Модель изображения. Определяет координаты фотографии, направление съемки, описания, хозяина изображения, изначальное название файла и время загрузки.
@@ -128,12 +125,13 @@ public class Picture {
      * Coordinates and degeree are set up here from 2 poins on the map. The first point is the photo location, the second point is used to set up the direction of the shot
      * <br>
      * Устанавливаются координаты снимка и направление через координаты 2х точек на карте. Первая точка - собственно координаты снимка. Вторая точка нужна для определения направления от первой точки.
+     * <br>
+     * Координаты в градусах отсчитываются: широта - с юга на север (т.е. экватор - ноль градусов, Северный полюс - 90), долгота - от Гринчинского меридиана на восток (т.е. Казань восточнее Москвы, т.е. долгота у нее будет больше).
      * @param coordinate1Lat first point (photo location) Latitude parameter use Float values
      * @param coordinate1Long first point (photo location) Longitude parameter use Float values
      * @param coordinate2Lat second point (photo direction) Latitude parameter use Float values
      * @param coordinate2Long second point (photo direction) Longitude parameter use Float values
      *
-     * Координаты в градусах отсчитываются: широта - с юга на север (т.е. экватор - ноль градусов, Северный полюс - 90), долгота - от Гринчинского меридиана на восток (т.е. Казань восточнее Москвы, т.е. долгота у нее будет больше).
      */
     public void setCoordinatesAndDegree(Float coordinate1Lat, Float coordinate1Long, Float coordinate2Lat, Float coordinate2Long) {
         this.coordinateLat = coordinate1Lat;
