@@ -7,6 +7,7 @@ package tatar.tourism.pojo;
 
 /**
  * POJO Model of Picture. Defines the photo coordinates and shot direction in degrees, description, owner user, original filename and upload time.
+ * <br>
  * Модель изображения. Определяет координаты фотографии, направление съемки, описания, хозяина изображения, изначальное название файла и время загрузки.
  */
 public class Picture {
@@ -29,16 +30,19 @@ public class Picture {
     String description;
     /**
      * Geographical latitude
+     * <br>
      * Географическая широта
      */
     Float coordinateLat;
     /**
      * Geographical longitude
+     * <br>
      * Географическая долгота
      */
     Float coordinateLong;
     /**
      * Shot degree in degrees, counted from the North clockwise
+     * <br>
      * Угол съемки, отсчитываемый от направления на север по часовой стрелке
      */
     Double degree;
@@ -82,6 +86,7 @@ public class Picture {
 
     /**
      * Latitude is set there
+     * <br>
      * Устанавливается значение широты
      * @param coordinateLat parameter use Fload values or can be null
      */
@@ -96,6 +101,7 @@ public class Picture {
 
     /**
      * Longitude is set there
+     * <br>
      * Устанавливается значение долготы
      * @param coordinateLong parameter use Fload values or can be null
      */
@@ -109,6 +115,7 @@ public class Picture {
 
     /**
      * Shot degree is set there
+     * <br>
      * Устанавливается угла съемки
      * @param degree parameter use Double values or can be null
      */
@@ -119,6 +126,7 @@ public class Picture {
 
     /**
      * Coordinates and degeree are set up here from 2 poins on the map. The first point is the photo location, the second point is used to set up the direction of the shot
+     * <br>
      * Устанавливаются координаты снимка и направление через координаты 2х точек на карте. Первая точка - собственно координаты снимка. Вторая точка нужна для определения направления от первой точки.
      * @param coordinate1Lat first point (photo location) Latitude parameter use Float values
      * @param coordinate1Long first point (photo location) Longitude parameter use Float values
