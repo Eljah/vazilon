@@ -121,4 +121,11 @@ public class PictureCoordinatesTest {
         assert(p.getDegree().equals(-45d));
     }
 
+    @Test
+    public void testBadIdeaDegreeSetterGetter() throws Throwable {
+        Picture p=new Picture();
+        p.setDegree(234.24d);
+        assert(p.getDegree().equals(234.24d));
+    }
+
 }
